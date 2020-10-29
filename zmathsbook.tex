@@ -1,0 +1,201 @@
+
+\documentclass[a4paper,10pt,parskip=half]{scrbook}
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc} %-- pour utiliser des accents en français
+\usepackage{mathpazo}
+\usepackage{amsmath,amssymb,amsthm} 
+\usepackage[square]{natbib}
+\usepackage{url}
+\usepackage{xspace}
+\usepackage[left=25mm,top=25mm]{geometry}
+% \usepackage{geometry}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{cancel}
+\usepackage{colortbl}
+\usepackage{lastpage}
+\usepackage{todonotes}
+\usepackage{fontawesome}
+\usepackage{ccicons}
+\usepackage{textcomp}
+\usepackage{gensymb}
+\usepackage{float}
+\usepackage{tikz}
+\usepackage[tikz]{mdframed}
+\usepackage[UKenglish]{isodate}% http://ctan.org/pkg/isodate
+
+\definecolor{colourforlinks}{rgb}{0.28, 0.5, 0.5}
+\usepackage[unicode=true,
+            breaklinks=true,
+            colorlinks=true,
+            allcolors=colourforlinks,
+            % pagebackref=true,
+            linktoc=page,
+            pdftitle={Computational modelling of terrains},
+            pdfauthor={Hugo Ledoux, Ken Arroyo Ohori, Ravi Peters}]{hyperref}
+
+
+\usepackage{bibentry}
+\nobibliography*
+
+\newcommand{\ie}{ie}
+\newcommand{\eg}{eg}
+\newcommand{\reffig}[1]{Figure~\ref{#1}}
+\newcommand{\refsec}[1]{Section~\ref{#1}}
+\newcommand{\refchap}[1]{Chapter~\ref{#1}}
+
+
+\setcapindent{1em} %-- for captions of Figures
+\setcounter{tocdepth}{\sectiontocdepth}
+% \setcounter{tocdepth}{\subsectiontocdepth}
+
+
+% \renewcommand{\refname}{References \& further reading}
+\renewcommand{\contentsname}{\vspace{-15mm}}
+
+\definecolor{light-gray}{gray}{0.97}
+\definecolor{myred}{RGB}{111,12,31}
+\definecolor{mygreen}{RGB}{35,138,35}
+
+\newfloat{myfloat}{thp}{lop}
+
+\newmdenv[%
+  outerlinewidth=1.5,%
+  roundcorner=5pt,%
+  linecolor=myred,%
+  backgroundcolor=light-gray,%
+  frametitle=\faExternalLink\ To read or watch,
+]{link-box}
+
+\newmdenv[%
+  outerlinewidth=1.5,%
+  roundcorner=5pt,%
+  linecolor=mygreen,%
+  backgroundcolor=light-gray,%
+  frametitle=\faCog\ How does it work in practice?,
+]{practice-box}
+
+
+\title{Post-primary School Mathematics}
+\author{Ronan Downes}
+\date{v0.1.1}
+
+
+
+
+\publishers{\begin{tikzpicture}
+\draw[fill=yellow] (0,0) -- (60:.75cm) arc (60:180:.75cm);
+\draw(120:0.4cm) node {$\alpha$};
+\draw[fill=green!30] (0,0) -- (right:.75cm) arc (0:60:.75cm);
+\draw(30:0.5cm) node {$\beta$};
+\begin{scope}[shift={(60:2cm)}]
+\draw[fill=green!30] (0,0) -- (180:.75cm) arc (180:240:.75cm);
+\draw (30:-0.5cm) node {$\gamma$};
+\draw[fill=yellow] (0,0) -- (240:.75cm) arc (240:360:.75cm);
+\draw (-60:0.4cm) node {$\delta$};
+\end{scope}
+\begin{scope}[thick]
+\draw (60:-1cm) node[fill=white] {$E$} -- (60:3cm) node[fill=white] {$F$};
+\draw[red] (-2,0) node[left] {$A$} -- (3,0) node[right]{$B$};
+\draw[blue,shift={(60:2cm)}] (-3,0) node[left] {$C$} -- (2,0) node[right]{$D$};
+\draw[shift={(60:1cm)},xshift=4cm];
+% node [right,text width=6cm,rounded corners,fill=red!20,inner sep=1ex]
+% {
+% When we assume that $\color{red}AB$ and $\color{blue}CD$ are
+% parallel, i.\,e., ${\color{red}AB} \mathbin{\|} \color{blue}CD$,
+% then $\alpha = \delta$ and $\beta = \gamma$.
+% };
+\end{scope}
+\end{tikzpicture}}
+
+
+
+
+% \publishers{\begin{tikzpicture}
+% \draw[fill=yellow] (0,0) -- (60:.75cm) arc (60:180:.75cm);
+% \draw(120:0.4cm) node {$\alpha$};
+% \draw[fill=green!30] (0,0) -- (right:.75cm) arc (0:60:.75cm);
+% \draw(30:0.5cm) node {$\beta$};
+% \begin{scope}[shift={(60:2cm)}]
+% \draw[fill=green!30] (0,0) -- (180:.75cm) arc (180:240:.75cm);
+% \draw (30:-0.5cm) node {$\gamma$};
+% \draw[fill=yellow] (0,0) -- (240:.75cm) arc (240:360:.75cm);
+% \draw (-60:0.4cm) node {$\delta$};
+% \end{scope}
+% \begin{scope}[thick]
+% \draw (60:-1cm) node[fill=white] {$E$} -- (60:3cm) node[fill=white] {$F$};
+% \draw[red] (-2,0) node[left] {$A$} -- (3,0) node[right]{$B$};
+% \draw[blue,shift={(60:2cm)}] (-3,0) node[left] {$C$} -- (2,0) node[right]{$D$};
+% \draw[shift={(60:1cm)},xshift=4cm];
+% % node [right,text width=6cm,rounded corners,fill=red!20,inner sep=1ex]
+% % {
+% % When we assume that $\color{red}AB$ and $\color{blue}CD$ are
+% % parallel, i.\,e., ${\color{red}AB} \mathbin{\|} \color{blue}CD$,
+% % then $\alpha = \delta$ and $\beta = \gamma$.
+% % };
+% \end{scope}
+% \end{tikzpicture}}
+
+
+
+
+
+
+
+% \publishers{\includegraphics[width=\linewidth]{front-back/quebec.jpg}}
+
+%-- remove the 'rd' in '23rd June' --> '23 June'
+
+
+\input{pre01}
+
+\cleanlookdateon
+
+\begin{document}
+
+%-------------------------------------------
+\frontmatter
+\maketitle
+
+\clearpage
+\include{front-back/pre}
+\include{front-back/preface}
+
+\tableofcontents
+% \listoffigures
+% \listoftables
+
+
+%-------------------------------------------
+\mainmatter
+\include{NUM/number00-part}
+\include{NUM/number01-systems}
+\include{NUM/number02-properties}
+\include{whatisterrain/whatisterrain} %- 01
+\include{acquisition/acquisition} %- 02
+% \include{dtvd/dtvd} %- 03
+% \include{interpol/interpol} %- 04
+% \include{kriging/kriging} %- 05
+% \include{topofeatures/topofeatures} %- 06
+% \include{runoff/runoff} %- 07
+% \include{conversion/conversion} %- 08
+% \include{spatialextent/spatialextent} %- 09
+% \include{massive/massive} %- 10
+% \include{visibility/visibility} %- 11
+% \include{pcprocessing/pcprocessing} %- 12
+% \include{bathymetry/bathymetry} %- 13
+
+
+%-------------------------------------------
+\backmatter 
+\bibliographystyle{refs/tb.bst} 
+\bibliography{refs/tb}
+
+\cleardoublepage
+\thispagestyle{empty}
+
+\end{document}
